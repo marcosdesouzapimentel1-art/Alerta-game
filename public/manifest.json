@@ -1,0 +1,24 @@
+{
+  "name": "Gamer Alerta",
+  "short_name": "Gamer Alerta",
+  "description": "Seu agregador definitivo de notícias, promoções, jogos gratuitos e alertas sobre videogames com design premium.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0E14",
+  "theme_color": "#2563EB",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/gamer_alerta_pwa_icon.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/gamer_alerta_pwa_icon.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}

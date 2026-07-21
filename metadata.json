@@ -1,0 +1,6 @@
+{
+  "name": "Gamer Alerta",
+  "description": "Seu agregador definitivo de notícias, promoções, jogos gratuitos e alertas sobre videogames com design premium e código Flutter de alta qualidade.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
