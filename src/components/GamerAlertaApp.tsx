@@ -354,6 +354,11 @@ export default function GamerAlertaApp() {
   const [couponCategoryFilter, setCouponCategoryFilter] = useState<string>("Tudo");
   const [copiedCouponId, setCopiedCouponId] = useState<string | null>(null);
 
+  // Beta feedback states
+  const [betaFeedbackText, setBetaFeedbackText] = useState("");
+  const [betaFeedbackType, setBetaFeedbackType] = useState("Sugestão");
+  const [showFeedbackSuccess, setShowFeedbackSuccess] = useState(false);
+
   // Admin Coupon form states
   const [adminCouponCode, setAdminCouponCode] = useState("");
   const [adminCouponDiscount, setAdminCouponDiscount] = useState("");
@@ -928,7 +933,8 @@ export default function GamerAlertaApp() {
             <div className="w-12 h-1.5 bg-slate-800 rounded-full overflow-hidden">
               <div className="h-full bg-[#F97316] animate-progress" style={{ width: "100%" }}></div>
             </div>
-            <span className="text-[10px] text-slate-500 mt-2">Carregando Firebase...</span>
+            <span className="text-[10px] text-slate-500 mt-1">Carregando Firebase...</span>
+            <span className="text-[9px] text-[#F97316] font-bold uppercase tracking-wider">Versão Beta 1.0.0</span>
           </div>
         </div>
       )}
@@ -1184,8 +1190,9 @@ export default function GamerAlertaApp() {
                <div className="w-7 h-7 rounded-lg bg-[#F97316] flex items-center justify-center">
                  <Gamepad2 className="w-4 h-4 text-white" />
                </div>
-               <span className="font-bold text-sm tracking-tight font-display uppercase">
+               <span className="font-bold text-sm tracking-tight font-display uppercase flex items-center gap-1.5">
                  Gamer<span className="text-[#F97316]">Alerta</span>
+                 <span className="bg-amber-500/15 border border-amber-500/30 text-amber-500 text-[8px] font-black px-1.5 py-0.5 rounded uppercase tracking-wider">Beta</span>
                </span>
             </div>
 
@@ -2513,6 +2520,95 @@ export default function GamerAlertaApp() {
                   ) : (
                     <div className="p-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-[10px] leading-relaxed">
                       💡 <strong>Dica de Instalação:</strong> Se o botão não aparecer, clique no ícone de instalar na barra de endereços do seu navegador ou selecione <strong>"Adicionar à Tela de Início"</strong> no menu de compartilhamento do seu celular!
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Canal de Feedback da Versão Beta */}
+              <div className="space-y-2">
+                <h4 className="text-[10px] uppercase font-extrabold tracking-wider text-slate-400">
+                  🧪 Central de Feedback Beta
+                </h4>
+                <div className={`p-3.5 rounded-xl border text-left text-xs space-y-3 ${appTheme === "dark" ? "bg-brand-orange/5 border-brand-orange/15" : "bg-orange-50/40 border-orange-200"}`}>
+                  <p className={`text-[10px] leading-relaxed ${appTheme === "dark" ? "text-slate-400" : "text-slate-600"}`}>
+                    Está testando a versão beta do Gamer Alerta? Reporte erros, envie sugestões de novas lojas parceiras ou dê a sua opinião!
+                  </p>
+
+                  {showFeedbackSuccess ? (
+                    <div className="p-3 rounded-lg bg-emerald-500/15 border border-emerald-500/35 text-emerald-500 space-y-1">
+                      <p className="font-extrabold text-[10px] uppercase tracking-wide">✓ Feedback Recebido com Sucesso!</p>
+                      <p className="text-[9px] leading-normal text-slate-300 dark:text-slate-300">Obrigado por ajudar no desenvolvimento! Suas sugestões foram salvas na simulação do Firebase.</p>
+                      <button 
+                        onClick={() => setShowFeedbackSuccess(false)}
+                        className="text-[9px] font-bold underline hover:no-underline text-emerald-400 mt-1 block cursor-pointer"
+                      >
+                        Enviar outro
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="space-y-2.5">
+                      <div className="grid grid-cols-2 gap-2">
+                        <div>
+                          <label className="block text-[8px] font-extrabold text-slate-400 uppercase tracking-wider mb-1">Tipo</label>
+                          <select 
+                            value={betaFeedbackType}
+                            onChange={(e) => setBetaFeedbackType(e.target.value)}
+                            className={`w-full px-2 py-1 rounded text-[10px] outline-none border ${appTheme === "dark" ? "bg-slate-950 border-slate-800 text-slate-200 focus:border-brand-orange" : "bg-white border-slate-300 text-slate-700 focus:border-brand-blue"}`}
+                          >
+                            <option value="Sugestão">💡 Sugestão</option>
+                            <option value="Bug">🐛 Bug / Erro</option>
+                            <option value="Loja">🏪 Nova Loja</option>
+                            <option value="Outros">💬 Outro</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label className="block text-[8px] font-extrabold text-slate-400 uppercase tracking-wider mb-1">Versão</label>
+                          <span className={`block w-full px-2 py-1.5 rounded text-[10px] border font-bold text-center ${appTheme === "dark" ? "bg-slate-950/40 border-slate-900 text-brand-orange" : "bg-slate-50 border-slate-200 text-slate-700"}`}>
+                            v1.0.0-BETA
+                          </span>
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-[8px] font-extrabold text-slate-400 uppercase tracking-wider mb-1">Mensagem</label>
+                        <textarea
+                          rows={2}
+                          value={betaFeedbackText}
+                          onChange={(e) => setBetaFeedbackText(e.target.value)}
+                          placeholder="Ex: Gostaria de cupons da loja Steam ou Epic..."
+                          className={`w-full px-2.5 py-1.5 rounded text-[10px] outline-none border resize-none ${appTheme === "dark" ? "bg-slate-950 border-slate-800 text-white focus:border-brand-orange" : "bg-white border-slate-300 text-slate-800 focus:border-brand-blue"}`}
+                        />
+                      </div>
+
+                      <button
+                        onClick={() => {
+                          if (!betaFeedbackText.trim()) {
+                            alert("Por favor, digite o seu feedback.");
+                            return;
+                          }
+                          setShowFeedbackSuccess(true);
+                          setBetaFeedbackText("");
+                          
+                          // Simulate dynamic notification
+                          setPushBanner({
+                            title: "🧪 FEEDBACK ENVIADO!",
+                            body: "Sua mensagem foi entregue aos desenvolvedores do Gamer Alerta!"
+                          });
+                          setNotifications(prev => [{
+                            id: Date.now().toString(),
+                            title: "🧪 FEEDBACK ENVIADO!",
+                            body: `Tipo: ${betaFeedbackType}. Agradecemos sua colaboração na nossa versão beta!`,
+                            time: "Agora",
+                            type: "news",
+                            read: false
+                          }, ...prev]);
+                          setTimeout(() => setPushBanner(null), 4500);
+                        }}
+                        className="w-full py-1.5 bg-brand-orange hover:bg-brand-orange-hover text-white text-[10px] font-extrabold rounded-lg shadow-sm transition-all active:scale-98 cursor-pointer flex items-center justify-center gap-1"
+                      >
+                        Enviar Feedback <Send className="w-3 h-3" />
+                      </button>
                     </div>
                   )}
                 </div>
