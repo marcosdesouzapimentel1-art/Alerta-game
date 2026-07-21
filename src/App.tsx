@@ -84,15 +84,15 @@ export default function App() {
           </button>
         </div>
 
-        {/* Column 1: Interactive Smartphone Simulator (Span 5 on Desktop) */}
-        <div className={`col-span-12 lg:col-span-5 flex flex-col items-center justify-center ${activePane === "simulator" ? "block" : "hidden lg:flex"}`}>
-          <div className="w-full max-w-sm">
+        {/* Column 1: Interactive App Panel (Span 6 on Desktop) */}
+        <div className={`col-span-12 lg:col-span-6 flex flex-col items-center justify-center ${activePane === "simulator" ? "block" : "hidden lg:flex"}`}>
+          <div className="w-full max-w-md">
             <div className="flex items-center justify-between px-4 mb-2 text-xs text-slate-500 font-mono">
               <span className="flex items-center gap-1.5 uppercase font-bold text-slate-400 tracking-wider">
-                <Smartphone className="w-3.5 h-3.5 text-brand-orange" />
-                Smartphone Virtual
+                <Gamepad2 className="w-3.5 h-3.5 text-brand-orange" />
+                Aplicativo Gamer Alerta (Beta Web)
               </span>
-              <span className="text-[10px]">Interativo • Toque para Testar</span>
+              <span className="text-[10px]">Interface Interativa • Versão Beta</span>
             </div>
             
             {/* Render Gamer Alerta Smartphone Simulator */}
@@ -100,8 +100,8 @@ export default function App() {
           </div>
         </div>
 
-        {/* Column 2: Interactive Developer Workspace (Span 7 on Desktop) */}
-        <div className={`col-span-12 lg:col-span-7 flex flex-col ${activePane === "code" ? "block" : "hidden lg:flex"}`}>
+        {/* Column 2: Interactive Developer Workspace (Span 6 on Desktop) */}
+        <div className={`col-span-12 lg:col-span-6 flex flex-col ${activePane === "code" ? "block" : "hidden lg:flex"}`}>
           <div className="flex items-center justify-between px-2 mb-2 text-xs text-slate-500 font-mono">
             <span className="flex items-center gap-1.5 uppercase font-bold text-slate-400 tracking-wider">
               <Cpu className="w-3.5 h-3.5 text-brand-blue" />

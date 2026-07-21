@@ -876,26 +876,11 @@ export default function GamerAlertaApp() {
   };
 
   return (
-    <div className={`w-full max-w-sm mx-auto overflow-hidden rounded-[40px] border-8 ${appTheme === "dark" ? "border-slate-800 bg-[#0B0E14] text-slate-200" : "border-slate-200 bg-slate-50 text-slate-800"} shadow-2xl relative flex flex-col`} style={{ height: "740px" }} id="gamer-alerta-smartphone">
+    <div className={`w-full overflow-hidden rounded-2xl border ${appTheme === "dark" ? "border-slate-800 bg-[#0B0E14] text-slate-200" : "border-slate-200 bg-slate-50 text-slate-800"} shadow-2xl relative flex flex-col`} style={{ height: "740px" }} id="gamer-alerta-smartphone">
       
-      {/* Dynamic Status Bar */}
-      <div className={`px-6 pt-3 pb-1 flex justify-between items-center text-xs font-semibold ${appTheme === "dark" ? "bg-[#0B0E14] text-slate-400" : "bg-slate-50 text-slate-500"} z-30 select-none`}>
-        <span>16:22</span>
-        {/* Dynamic Island / Notch Mock */}
-        <div className="w-24 h-4 bg-black rounded-full absolute left-1/2 transform -translate-x-1/2 top-2 border border-slate-900 flex items-center justify-center">
-          <div className="w-1.5 h-1.5 bg-[#101015] rounded-full absolute right-3"></div>
-        </div>
-        <div className="flex items-center gap-1.5">
-          <span className="text-[10px]">5G</span>
-          <div className="w-5 h-2.5 border rounded-sm p-0.5 flex items-center">
-            <div className={`h-full w-4/5 rounded-2xs ${appTheme === "dark" ? "bg-slate-400" : "bg-slate-500"}`}></div>
-          </div>
-        </div>
-      </div>
-
       {/* FCM Simulated Push Notification Banner */}
       {pushBanner && (
-        <div className="absolute top-10 left-3 right-3 bg-[#151921]/95 backdrop-blur-md border-l-4 border-[#F97316] text-white p-3 rounded-xl shadow-2xl z-50 flex items-start gap-2.5 animate-bounce">
+        <div className="absolute top-3 left-3 right-3 bg-[#151921]/95 backdrop-blur-md border-l-4 border-[#F97316] text-white p-3 rounded-xl shadow-2xl z-50 flex items-start gap-2.5 animate-bounce">
           <div className="bg-[#2563EB]/20 p-1.5 rounded-lg text-[#2563EB]">
             <Gamepad2 className="w-5 h-5" />
           </div>
